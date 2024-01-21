@@ -51,6 +51,25 @@ Our final values for gains were Kp = 7.75 and Kd = 30.
 During testing, we discovered that when one of the motors reaches a value under 100, the other motor may not have enough power to push the robot forward by itself. Therefore we included a test where if there is only one motor active, we boost its speed.
 
 ## 📷Setup photo📷
+<details>
+  <summary>Main body</summary>
+  <img src="https://github.com/iuliastaci/LineFollower-Kuongshun/assets/103101598/7e6ebe9f-3a4c-4aa0-a45e-0e5423d04628" width="70%" height="50%">
+</details>
+<details>
+  <summary>Battery compartment</summary>
+  <img src="https://github.com/iuliastaci/LineFollower-Kuongshun/assets/103101598/ce3fabcc-7915-4dd8-9d94-1bbc71d82ab5" width="70%" height="50%">
+</details>
+<details>
+  <summary>Motor mount</summary>
+  <img src="https://github.com/iuliastaci/LineFollower-Kuongshun/assets/103101598/fa14cb81-e454-4469-9642-41152d0c610a" width="70%" height="50%">
+</details>
+<details>
+  <summary>Full setup</summary>
+  <img src="https://github.com/iuliastaci/LineFollower-Kuongshun/assets/103101598/35438640-1f2e-45f3-a62b-d947b0d5a55e" width="60% height="80">
+  <img src="https://github.com/iuliastaci/LineFollower-Kuongshun/assets/103101598/65984d76-dc45-4c90-8783-183ce45d6902" width="60% height="80">
+  <img src="https://github.com/iuliastaci/LineFollower-Kuongshun/assets/103101598/18be079c-8628-4e2b-a8a0-88170e0af7d2" width="60% height="80">
+</details>
 
 ## 🎥Video🎥
 Click [here]() to watch our line-follower robot on the final track.
+
