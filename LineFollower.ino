@@ -32,6 +32,7 @@ const int sensorCount = 6;
 const uint8_t sensorPins[sensorCount] = {A0, A1, A2, A3, A4, A5};
 
 // Calibration configuration
+const int callibrationRounds = 400;
 const int calibrationSpeed = 160;
 const int maxCalibrationValue = 50;
 const int calibrationCenterDelta = 5;
@@ -116,7 +117,7 @@ void calibration()
 
     // alternate left - right while calibrating
     int dir = 1;
-    for (uint16_t i = 0; i < 400; i++)
+    for (uint16_t i = 0; i < callibrationRounds; i++)
     {
         qtr.calibrate();
 
@@ -134,9 +135,10 @@ void calibration()
     setMotorSpeed(0, 0);
     
     // move back to center
-    while(error < -calibrationCenterDelta|| error > calibrationCenterDelta) {
+    while (error < -calibrationCenterDelta || error > calibrationCenterDelta) {
         setMotorSpeed(-dir * calibrationSpeed, dir * calibrationSpeed);
-        error = map(qtr.readLineBlack(sensorValues), 0, 5000, -50, 50);
+
+        error = map(qtr.readLineBlack(sensorValues), minSensorsValue, maxSensorsValue, minErrorValue, maxErrorValue);
         if (error >= calibrationCenterDelta && dir == 1) {
             dir = -1;
         } else if (error <= -calibrationCenterDelta && dir == -1) {
@@ -160,7 +162,7 @@ void calibration()
 void pidControl(float kp, float ki, float kd)
 {
     // read error from sensor
-    int error = map(qtr.readLineBlack(sensorValues), 0, 5000, -50, 50);
+    error = map(qtr.readLineBlack(sensorValues), minSensorsValue, maxSensorsValue, minErrorValue, maxErrorValue);
 
     // compute PID components
     p = error;
@@ -174,12 +176,9 @@ void pidControl(float kp, float ki, float kd)
     m1Speed = baseSpeed;
     m2Speed = baseSpeed;
 
-    if (motorSpeed < 0)
-    {
+    if (motorSpeed < 0) {
         m1Speed += motorSpeed;
-    }
-    else if (motorSpeed > 0)
-    {
+    } else if (motorSpeed > 0) {
         m2Speed -= motorSpeed;
     }
 
@@ -208,43 +207,36 @@ void pidControl(float kp, float ki, float kd)
  */
 void setMotorSpeed(int motor1Speed, int motor2Speed)
 {
-    if (motor1Speed == 0)
-    {
+    if (motor1Speed == 0) {
         digitalWrite(m11Pin, LOW);
         digitalWrite(m12Pin, LOW);
         analogWrite(m1Enable, motor1Speed);
-    }
-    else
-    {
-        if (motor1Speed > 0)
-        {
+    } else {
+        if (motor1Speed > 0) {
             digitalWrite(m11Pin, HIGH);
             digitalWrite(m12Pin, LOW);
             analogWrite(m1Enable, motor1Speed);
         }
-        if (motor1Speed < 0)
-        {
+        
+        if (motor1Speed < 0) {
             digitalWrite(m11Pin, LOW);
             digitalWrite(m12Pin, HIGH);
             analogWrite(m1Enable, -motor1Speed);
         }
     }
-    if (motor2Speed == 0)
-    {
+    
+    if (motor2Speed == 0) {
         digitalWrite(m21Pin, LOW);
         digitalWrite(m22Pin, LOW);
         analogWrite(m2Enable, motor2Speed);
-    }
-    else
-    {
-        if (motor2Speed > 0)
-        {
+    } else {
+        if (motor2Speed > 0) {
             digitalWrite(m21Pin, HIGH);
             digitalWrite(m22Pin, LOW);
             analogWrite(m2Enable, motor2Speed);
         }
-        if (motor2Speed < 0)
-        {
+        
+        if (motor2Speed < 0) {
             digitalWrite(m21Pin, LOW);
             digitalWrite(m22Pin, HIGH);
             analogWrite(m2Enable, -motor2Speed);
