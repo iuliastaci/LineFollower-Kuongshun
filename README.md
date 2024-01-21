@@ -1,11 +1,11 @@
 # 🏎️LineFollower-Kuongshun🏎️
 
 ## 🧩About🧩
-This Arduino project was developed during a one-day hackathon that took place at the Faculty of Mathematics and Computer Science, University of Bucharest for the "Introduction to Robotics" 3rd-year course. It focused on the assembly and programming of a line-follower robot.
+This Arduino project was developed during a one-day hackathon at the Faculty of Mathematics and Computer Science, University of Bucharest for the "Introduction to Robotics" 3rd-year course. It focused on the assembly and programming of a line-follower robot.
 This project was made in teams of 3 people, me and my colleagues, [Tudor Coriciuc](https://github.com/Bucovina) and [Tudor-David Butufei](https://github.com/i2002), formed Kuongshun team (the name comes after the Arduino kit).
 
 ## 📌Task📌
-The task of the project was to develop a line-follower robot that follows a black line on a white background as accurate as possible in order to finish the track. It had 3 attempts to get the best time. For maximum grade, the calibration of QTR-8A reflectance sensor had to be done automatically and the robot had to complete the final track in less than 20 seconds.
+The task of the project was to develop a line-follower robot that follows a black line on a white background as accurately as possible to finish the track. It had 3 attempts to get the best time. For maximum grade, the calibration of QTR-8A reflectance sensor had to be done automatically and the robot had to complete the final track in less than 20 seconds.
 Our robot's best time was 16.752 seconds. Also, we have got 0.5 bonus points for the assembly design. 
 
 ## ⚒️Design and components details⚒️
@@ -28,7 +28,7 @@ Various LEGO Technic bricks (such as beams, half beams and axles) have been used
 The most challenging part of the design was finding a way to attach the motors to the LEGO chassis without compromising stability.
 
 ## 📝Functionality and implementation details📝
-In order to achieve the task, the speed of our robot's motors was controlled by a PID controller and at the start of the track, an automatic calibration was done. 
+To achieve the task, the speed of our robot's motors was controlled by a PID controller and at the start of the track, an automatic calibration was done. 
 
 - #### Automatical calibration
 This calibration consisted of moving the robot left and right alongside the black line to ensure that each sensor "sees" it and the white background to determine the min and max luminosity values. At the end of the calibration routine, the robot returns to the center of the line.
@@ -71,5 +71,5 @@ During testing, we discovered that when one of the motors reaches a value under 
 </details>
 
 ## 🎥Video🎥
-Click [here]() to watch our line-follower robot on the final track.
+Click [here](https://youtube.com/shorts/qIztd3UylrY) to watch our line-follower robot on the final track.
 
