@@ -47,6 +47,9 @@ For this project, the integral part of the PID control system was not used.
 To choose the values for Kp and Kd gains, we mostly used the trial-and-error method; we started by choosing a value for Kp and doing a bunch of test drives while adjusting the Kp value. After the robot was following the track only with some overshoot at curves, we introduced the value of the Kd gain. For Kd gain's value, we have also looked over [the Ziegler-Nichols tuning method](https://en.wikipedia.org/wiki/Ziegler%E2%80%93Nichols_method), just to find a link between Kp and Kd values and without calculating the oscillation period.
 Our final values for gains were Kp = 7.75 and Kd = 30.
 
+- #### Additional optimizations
+During testing, we discovered that when one of the motors reaches a value under 100, the other motor may not have enough power to push the robot forward by itself. Therefore we included a test where if there is only one motor active, we boost its speed.
+
 ## 📷Setup photo📷
 
 ## 🎥Video🎥
